@@ -1,0 +1,16 @@
+[Unit]
+Description=OpenVPN Web Manager
+After=network.target openvpn@server.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/proj/tools/openvpn-web
+ExecStart=/usr/bin/python3 /proj/tools/openvpn-webapp.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
